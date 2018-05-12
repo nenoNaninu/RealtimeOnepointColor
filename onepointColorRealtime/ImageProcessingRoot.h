@@ -17,5 +17,5 @@ private:
 	std::unique_ptr<RealsenseAPI> realsense;
 	bool processing = false;
 	bool selected = false;
-	cv::Scalar selectedPixelValue;
+	cv::Vec3b selectedPixelValue;
 };

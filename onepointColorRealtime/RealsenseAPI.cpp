@@ -20,6 +20,7 @@ bool RealsenseAPI::initialize(int width, int height, int fps)
 	if (device)
 	{
 		device->ResetProperties(Capture::STREAM_TYPE_ANY);
+		device->SetColorAutoWhiteBalance(false);
 		device->SetMirrorMode(Capture::Device::MirrorMode::MIRROR_MODE_HORIZONTAL);
 		return true;
 	}
