@@ -3,7 +3,7 @@
 
 using namespace cv;
 
-void ImageProcessingRoot::getDisplayImage(cv::Mat & drawingImg)const
+void ImageProcessingRoot::getDisplayImage(cv::Mat & drawingImg)
 {
 
 	if (processing)
@@ -71,6 +71,7 @@ void ImageProcessingRoot::getDisplayImage(cv::Mat & drawingImg)const
 	{
 		realsense->getColorImage(drawingImg);
 	}
+	//writer << drawingImg;
 
 }
 
