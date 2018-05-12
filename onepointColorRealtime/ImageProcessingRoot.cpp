@@ -19,13 +19,11 @@ void ImageProcessingRoot::getDisplayImage(cv::Mat & drawingImg)const
 		{
 			Mat mask(realsense->getHeight(), realsense->getHeight(), CV_8UC1);
 			//const Scalar diff(5, 20, 20);
-			inRange(hsvPanels, selectedPixelValue[0] - 7, selectedPixelValue[0] + 7, mask);
+			inRange(hsvPanels[0], selectedPixelValue[0] - 7, selectedPixelValue[0] + 7, mask);
 			erode(mask, mask, Mat());
 			erode(mask, mask, Mat());
 			dilate(mask, mask, Mat());
 			dilate(mask, mask, Mat());
-			imshow("mask", mask);
-			waitKey(1);
 			hsvPanels[1].setTo(0, ~mask);
 			merge(hsvPanels, hsvImage);
 
