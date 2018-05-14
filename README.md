@@ -1,4 +1,4 @@
-# onepointColorRealtime
+# RealtimeOnepointColor
 今ドール界隈ではやっているワンポイントカラーのやつをリアルタイムにしてみた。
 
 結果こんな感じに。
