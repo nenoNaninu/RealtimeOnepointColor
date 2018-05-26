@@ -17,14 +17,13 @@ bool RealsenseAPI::initialize(int width, int height, int fps)
 	this->senseManager->EnableStream(Capture::STREAM_TYPE_COLOR, width, height, fps);
 	this->senseManager->Init();
 	Capture::Device* device = this->senseManager->QueryCaptureManager()->QueryDevice();
-	if (device)
-	{
-		device->ResetProperties(Capture::STREAM_TYPE_ANY);
-		device->SetColorAutoWhiteBalance(false);
-		device->SetMirrorMode(Capture::Device::MirrorMode::MIRROR_MODE_HORIZONTAL);
-		return true;
-	}
-	return false;
+	if (device == nullptr) return false;
+
+
+	device->ResetProperties(Capture::STREAM_TYPE_ANY);
+	device->SetColorAutoWhiteBalance(false);
+	device->SetMirrorMode(Capture::Device::MirrorMode::MIRROR_MODE_HORIZONTAL);
+	return true;
 }
 
 RealsenseAPI::~RealsenseAPI()
@@ -69,7 +68,7 @@ void RealsenseAPI::getColorImage(cv::Mat& inputMat)const
 
 	if (sample->color)
 	{
-		Image::ImageData data = {}; 
+		Image::ImageData data = {};
 		const Image::Rotation rotation = sample->color->QueryRotation();
 		status = sample->color->AcquireAccess(Image::ACCESS_READ, Image::PIXEL_FORMAT_RGB24, rotation, Image::OPTION_ANY, &data);
 		if (status >= Status::STATUS_NO_ERROR)
